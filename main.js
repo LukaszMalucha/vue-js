@@ -1,77 +1,55 @@
-// Comment list component
-Vue.component("comment-list", {
+Vue.component("to-do", {
     props: {
-        comments: {
+        tasks: {
             type: Array,
+            required: true
+        },
+         remaining: {
+            type: Number,
             required: true
         }
     },
-    data: function(){
+    data() {
         return {
-            new_comment: null,
-            comment_author: null,
+            new_task: null,
             error: null
         }
     },
     methods: {
-        submitComment() {
-            if (this.new_comment && this.comment_author) {
-                 this.$emit('submit-comment', {username: this.comment_author,
-                                   content: this.new_comment });
-                 this.new_comment = null;
-                 this.comment_author = null;
-
-                 if (this.error) {
+        submitTask(){
+            if (this.new_task) {
+                this.$emit("add-task", this.new_task);
+                this.new_task = null;
+                if(this.error) {
                     this.error = null;
-                 }
+                }
             } else {
-                this.error = "please fill out both fields!"
+                this.error = "Input field can't be empty";
             }
+        },
+        removeTask(task) {
+            this.$emit("remove-task", task);
         }
     },
     template: `
-        <div class="mt-2">
-            <div class="container">
-                <single-comment v-for="(comment, index) in comments" :comment="comment" :key="index + 2"></single-comment>
-                <hr>
-
-                <h3>{{ error }}</h3>
-                <form @submit.prevent="submitComment" class="mb-3">
-                    <div class="form-group">
-                        <label for="commentAuthor">Your Username</label>
-                        <input class="form-control" id="commentAuthor" type="text" v-model="comment_author"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="commentText">Add a comment</label>
-                        <textarea class="form-control" id="commentText" rows="3" cols="40" v-model="new_comment"></textarea>
-                    </div>
-                    <button  class="btn btn-sm btn-primary"
-                    type="submit">Publish</button>
-                </form>
-            </div>
-        </div>
-    `
-})
+        <div class="container mt-2">
+            <p><strong>Remaining Tasks: {{remaining}} </strong></p>
+            <input type="text" class="form-control" placeholder="What do you need to do?"
+                v-model="new_task" @keyup.enter="submitTask">
+            <br>
 
 
-// Single comment component
-Vue.component("single-comment",{
-    props: {
-        comment: {
-            type: Object,
-            required: true
-        }
-    },
-    template: `
-        <div class="mb-2">
-            <div class="card">
-                <div class="card-header">
-                    <p> Published by: {{ comment.username }} </p>
-                </div>
-                <div class="card-body">
-                    <p> {{ comment.content }} </p>
+            <div class="single-task" v-for="(task, index) in tasks" :task="task" :key="index">
+                <div class="alert alert-success">
+                  {{ task }}
+                  <button type="button" class="close no-outline" @click="removeTask(task)">
+                    <span>&times;</span>
+                  </button>
                 </div>
             </div>
+
+            <p v-if="error">{{ error }}</p>
+            <p v-if="remaining === 0">To add a new task, write something and press enter!</p>
         </div>
     `
 })
@@ -80,16 +58,19 @@ Vue.component("single-comment",{
 var app = new Vue({
     el: '#app',
     data: {
-        comments: [
-            {username: 'alice', content: "first comment"},
-            {username: 'bob', content: "second comment"},
-            {username: 'frank', content: "third comment"},
-            {username: 'eva', content: "fourth comment"},
-        ]
+        tasks: []
+    },
+    computed: {
+        taskCount() {
+            return this.tasks.length;
+        }
     },
     methods: {
-        addNewComment(new_comment) {
-            this.comments.push(new_comment);
+        addNewTask(new_task) {
+            this.tasks.push(new_task);
+        },
+        removeTask(task) {
+            this.tasks.splice(this.tasks.indexOf(task), 1);
         }
     }
 })
