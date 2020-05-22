@@ -15,9 +15,9 @@ var app = new Vue({
             this.comments.push(new_comment);
             this.comment = null;
 
-            if (this.errors{
+            if (this.errors){
                 this.errors = null;
-            })
+            }
         } else{
             this.errors = "Comment field can't be empty";
         }
