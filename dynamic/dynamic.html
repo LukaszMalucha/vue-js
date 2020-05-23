@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello Vue</title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+<div id="demo">
+  <button @click="addInput">Add input</button>
+  <div v-for="(input, index) in inputs">
+    <input name="data" v-model="inputs[index]"  />
+  </div>
+  <p>
+    First value: {{ inputs[0] }}<br />
+    Second value: {{ inputs[1] }}
+  </p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script type='text/javascript' src="main.js"></script>
+</body>
+
+</html>
