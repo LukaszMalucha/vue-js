@@ -1,5 +1,5 @@
 
-var key = ''
+var key = 'zz'
 
 
 export { key };
