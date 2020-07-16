@@ -6,8 +6,8 @@
 
 <script>
 import SearchBar from "./components/SearchBar";
-import key from "./env.js";
-const API_KEY = key
+//import key from "./env.js";
+const API_KEY = process.env.VUE_APP_KEY
 
 export default {
   name: 'App',
