@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input @input="onInput" />
+  <div class="input-div">
+    <input  @input="onInput" />
   </div>
 </template>
 
@@ -17,4 +17,15 @@ export default {
 
 
 <style>
+  input: {
+    width: 75%;
+
+  }
+  .input-div {
+    text-align: center;
+    margin: 20px;
+  }
+  .list-group {
+    text-align: left;
+  }
 </style>

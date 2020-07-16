@@ -2,4 +2,4 @@ venv/
 .idea/
 youtube/src/env.js
 env.js
-env.*
+.env
