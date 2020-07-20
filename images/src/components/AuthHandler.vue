@@ -5,10 +5,11 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'AuthHandler',
+  created() {
+    document.title = "ASDZXC";
 
+  },
 };
 </script>
