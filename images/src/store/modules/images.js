@@ -1,4 +1,4 @@
-
+import api from "../../api/imgur";
 
 const state = {
   images: []
@@ -10,8 +10,11 @@ const getters = {
 
 
 const actions = {
-  fetchImages() {
-
+// reference to all state stored in Vuex store
+  async fetchImages({ rootState, commit }) {
+    const { token } = rootState.auth;
+    const response = await api.fetchImages(token);
+    commit('setImages', response.data.data);
   }
 };
 

@@ -20,3 +20,7 @@ export default {
     })
   }
 };
+
+
+
+https://api.imgur.com/3/upload
