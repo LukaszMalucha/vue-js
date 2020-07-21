@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/asd',
+      path: '/oauth2/callback',
       name: "AuthHandler",
       component: AuthHandler,
     },

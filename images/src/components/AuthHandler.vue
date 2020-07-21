@@ -5,11 +5,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'AuthHandler',
+  methods: {
+    ...mapActions(['finalizeLogin']),
+  },
   created() {
-    document.title = "ASDZXC";
-
+      this.finalizeLogin(window.location.hash);
   },
 };
 </script>

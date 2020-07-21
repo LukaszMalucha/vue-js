@@ -2,7 +2,6 @@
 
 <div >
    <div>
-      <h1> XXXXXXXXXXXXXXXXXXXXXAWDASDASDASDADSas </h1>
    </div>
 </div>
 </template>
