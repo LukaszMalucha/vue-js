@@ -2,6 +2,7 @@
 
 <div >
    <div>
+   IMAGES
    </div>
 </div>
 </template>
@@ -9,24 +10,12 @@
 <script>
 
 export default {
-  name: 'Home',
+  name: 'Images',
   components: {
   },
-  props: {
 
-  },
-  data() {
-    return {
-
-    }
-  },
-  methods: {
-  },
-  computed: {
-
-  },
   created() {
-    document.title = "HOME";
+    document.title = "Images";
 
   },
 };
