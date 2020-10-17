@@ -18,9 +18,22 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  computed: {
+    ...mapGetters(['isLoggedIn']),
+  },
+  methods: {
+    ...mapActions(['login', 'logout']),
+  }
 };
-
 </script>
+
+<style scoped>
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+</style>
