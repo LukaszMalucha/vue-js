@@ -25,3 +25,10 @@ const mutations = {
     state.token = token;
   }
 };
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations,
+};
