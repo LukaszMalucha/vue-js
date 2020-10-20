@@ -4,8 +4,6 @@ import axios from 'axios';
 const CLIENT_ID = process.env.VUE_APP_CLIENT_ID;
 const ROOT_URL = "https://api.imgur.com"
 
-
-
 export default {
   login() {
     const querystring = {
@@ -19,7 +17,24 @@ export default {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    });
+    })
   },
+  uploadImages(images, token) {
+//  Loop over list of images. Parallel uploads with promise.  Transform array-like object into array with .from map
+    const promises = Array.from(images).map(image => {
+        const formData = new FormData();
+        formData.append('image', image);
 
-}
+        return axios.post(`${ROOT_URL}/3/image`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+      });
+    return Promise.all(promises);
+  }
+};
+
+
+
+//https://api.imgur.com/3/upload

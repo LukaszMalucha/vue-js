@@ -18,22 +18,17 @@
 </template>
 
 <script>
-import  { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AppHeader',
   computed: {
     ...mapGetters(['isLoggedIn']),
   },
-
-
   methods: {
     ...mapActions(['login', 'logout']),
   }
-
-
 };
-
 </script>
 
 <style scoped>

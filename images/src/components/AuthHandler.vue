@@ -1,6 +1,6 @@
 <template>
   <div>
-    Please wait...
+      Please wait...
   </div>
 </template>
 
@@ -12,10 +12,8 @@ export default {
   methods: {
     ...mapActions(['finalizeLogin']),
   },
-
   created() {
       this.finalizeLogin(window.location.hash);
-  }
+  },
 };
-
 </script>

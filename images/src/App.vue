@@ -7,7 +7,6 @@
   </div>
 </template>
 
-
 <script>
 import AppHeader from './components/AppHeader';
 
@@ -16,16 +15,5 @@ export default {
   components: {
     AppHeader
   }
-
-}
-
-
+};
 </script>
-
-
-<style scoped>
-.horizontal {
-  display: flex;
-  flex-direction: row;
-}
-</style>

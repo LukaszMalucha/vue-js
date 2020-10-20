@@ -1,5 +1,5 @@
-import api from '../../api/imgur';
-import qs from 'qs';
+import api from '../../api/imgur.js';
+import qs from 'qs'
 import router from '../../router.js'
 
 const state = {
@@ -7,8 +7,10 @@ const state = {
 };
 
 const getters = {
+// Check if token exists or not
   isLoggedIn: state => !!state.token
 };
+
 
 const actions = {
   login: () => {
@@ -27,6 +29,7 @@ const actions = {
 };
 
 const mutations = {
+// Update token
   setToken: (state, token) => {
     state.token = token;
   }
@@ -36,5 +39,5 @@ export default {
   state,
   getters,
   actions,
-  mutations,
-};
+  mutations
+}
